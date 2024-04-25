@@ -33,6 +33,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           className="
             ml-3 text-sm font-bold tracking-wide
             text-gray-700"
+          htmlFor="email"
         >
           Email
         </label>
@@ -40,6 +41,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           className="
             w-full content-center text-base px-4 py-2 rounded-2xl 
             border-gray-300 focus:border-dark-primary-500 border-b focus:outline-none"
+          id="email"
           type="text"
           placeholder="mail@gmail.com"
           data-testid="email-input"
@@ -51,6 +53,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           className="
             ml-3 text-sm font-bold tracking-wide
             text-gray-700"
+          htmlFor="password"
         >
           Password
         </label>
@@ -58,6 +61,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           className="
             w-full content-center text-base px-4 py-2 border-b rounded-2xl 
             border-gray-300 focus:border-dark-primary-500 focus:outline-none"
+          id="password"
           type="password"
           placeholder="Enter your password"
           data-testid="password-input"
@@ -68,6 +72,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         <div className="flex items-center">
           <input
             className="h-4 w-4 rounded"
+            id="remember-me"
             type="checkbox"
             data-testid="remember-me-input"
             {...register("rememberMe")}
@@ -76,6 +81,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             className="
               ml-2 block text-sm 
               text-gray-900"
+            htmlFor="remember-me"
           >
             Remember me
           </label>

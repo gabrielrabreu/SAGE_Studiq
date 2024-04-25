@@ -88,6 +88,7 @@ const Header: React.FC<HeaderProps> = ({
                   flex items-center justify-center w-12 h-12 cursor-pointer rounded-lg
                   text-stone-500 border-stone-200 border border-solid
                   dark:text-white dark:border-dark-mixed-300"
+                role="button"
                 onClick={toggleDarkMode}
                 data-testid="toggle-dark-mode-button"
               >

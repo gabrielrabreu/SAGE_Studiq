@@ -11,12 +11,14 @@ const SocialLogin: React.FC<SocialLoginProps> = ({ onSocialLogin }) => {
         className="
           w-11 h-11 items-center justify-center inline-flex rounded-2xl font-bold text-lg cursor-pointer
           bg-white border"
+        role="button"
         onClick={() => onSocialLogin("Google")}
         data-testid="google-provider-button"
       >
         <img
           className="w-4 h-4"
           src="https://imagepng.org/wp-content/uploads/2019/08/google-icon.png"
+          alt="Google"
         />
       </a>
     </div>
