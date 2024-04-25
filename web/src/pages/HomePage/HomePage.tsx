@@ -1,59 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+
+import Card from "../../components/Card/Card";
+import {
+  RecentActivities,
+  recentActivities,
+} from "../../services/home.service";
 
 const HomePage: React.FC = () => {
+  const [activities, setActivities] = useState<RecentActivities>();
+
+  useEffect(() => {
+    fetchRecentActivities();
+  }, []);
+
+  const fetchRecentActivities = async () => {
+    await recentActivities()
+      .then((response) => {
+        setActivities(response.data);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
-    <div>
-      <nav className="sticky top-0 grid grid-cols-3">
-        <div className="p-1">
-          <div className="grid grid-cols-4 gap-1">
-            <div>
-              <img src="/logo.svg" alt="logo" />
-            </div>
-            <div className="bg-gray-300">Item 1.2</div>
-            <div className="bg-gray-300">Item 1.3</div>
-            <div className="bg-gray-300">Item 1.4</div>
-          </div>
-        </div>
-        <div className="p-1">
-          <div className="bg-gray-300">Item 2</div>
-        </div>
-        <div className="p-1">
-          <div className="grid grid-cols-5 gap-1">
-            <div className="bg-gray-300">Item 3.1</div>
-            <div className="bg-gray-300">Item 3.2</div>
-            <div className="bg-gray-300">Item 3.3</div>
-            <div className="bg-gray-300 col-span-2">Item 3.4</div>
-          </div>
-        </div>
-      </nav>
-      <main>
-        <div className="m-auto max-w-7xl">
-          <div className="mt-12">
-            <div className="bg-gray-300">Item 1</div>
-            <div className="mt-1 grid grid-cols-3 gap-1">
-              <div className="bg-gray-300">Item 1.1</div>
-              <div className="bg-gray-300">Item 1.2</div>
-              <div className="bg-gray-300">Item 1.3</div>
-            </div>
-          </div>
-          <div className="mt-12">
-            <div className="bg-gray-300">Item 2</div>
-            <div className="mt-1 grid grid-cols-3 gap-1">
-              <div className="bg-gray-300">Item 2.1</div>
-              <div className="bg-gray-300">Item 2.2</div>
-              <div className="bg-gray-300">Item 2.3</div>
-            </div>
-          </div>
-          <div className="mt-12">
-            <div className="bg-gray-300">Item 3</div>
-            <div className="mt-1 grid grid-cols-3 gap-1">
-              <div className="bg-gray-300">Item 3.1</div>
-              <div className="bg-gray-300">Item 3.2</div>
-              <div className="bg-gray-300">Item 3.3</div>
-            </div>
-          </div>
-        </div>
-      </main>
+    <div className="container mx-auto p-4">
+      <h1
+        className="
+          font-semibold py-4
+          text-black
+          dark:text-white"
+      >
+        Recent Activities
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+        {activities?.items.map((activity, index) => (
+          <Card
+            key={index}
+            imageUrl={activity.imageUrl}
+            title={activity.title}
+            tags={activity.tags}
+            authorName={activity.authorName}
+            authorAvatarUrl={activity.authorAvatarUrl}
+          />
+        ))}
+      </div>
     </div>
   );
 };
