@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 
 import Card from "../../components/Card/Card";
 import {
@@ -35,9 +36,9 @@ const HomePage: React.FC = () => {
         Recent Activities
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-        {activities?.items.map((activity, index) => (
+        {activities?.items.map((activity) => (
           <Card
-            key={index}
+            key={uuidv4()}
             imageUrl={activity.imageUrl}
             title={activity.title}
             tags={activity.tags}

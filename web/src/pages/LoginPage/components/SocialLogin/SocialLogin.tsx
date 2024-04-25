@@ -7,11 +7,10 @@ interface SocialLoginProps {
 const SocialLogin: React.FC<SocialLoginProps> = ({ onSocialLogin }) => {
   return (
     <div className="flex flex-row justify-center items-center space-x-3">
-      <a
+      <button
         className="
-          w-11 h-11 items-center justify-center inline-flex rounded-2xl font-bold text-lg cursor-pointer
+          w-11 h-11 items-center justify-center inline-flex rounded-2xl font-bold text-lg
           bg-white border"
-        role="button"
         onClick={() => onSocialLogin("Google")}
         data-testid="google-provider-button"
       >
@@ -20,7 +19,7 @@ const SocialLogin: React.FC<SocialLoginProps> = ({ onSocialLogin }) => {
           src="https://imagepng.org/wp-content/uploads/2019/08/google-icon.png"
           alt="Google"
         />
-      </a>
+      </button>
     </div>
   );
 };

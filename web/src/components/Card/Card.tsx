@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 interface CardProps {
   imageUrl: string;
@@ -42,7 +43,7 @@ const Card: React.FC<CardProps> = ({
           <div className="flex flex-wrap gap-1">
             {tags.map((tag, index) => (
               <span
-                key={index}
+                key={uuidv4()}
                 className="
                   rounded-lg py-1.5 px-3 text-xs font-bold uppercase
                    bg-white text-black border border-stone-200 

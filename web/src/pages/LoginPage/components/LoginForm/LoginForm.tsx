@@ -87,14 +87,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           </label>
         </div>
         <div className="text-sm">
-          <a
-            href="#"
+          <button
             className="
               no-underline hover:underline 
               text-dark-primary-700"
+            type="button"
           >
             Forgot your password?
-          </a>
+          </button>
         </div>
       </div>
       <div>
@@ -114,14 +114,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           text-dark-mixed-500"
       >
         <span>Don't have an account?</span>
-        <a
-          href="#"
+        <button
           className="
             no-underline cursor-pointer hover:underline
             text-dark-primary-700"
+          type="button"
         >
           Sign up
-        </a>
+        </button>
       </p>
     </form>
   );

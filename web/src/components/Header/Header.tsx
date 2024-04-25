@@ -73,30 +73,29 @@ const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <div className="hidden relative items-center ml-2 lg:ml-4">
-              <a
+              <button
                 className="
-                  flex items-center justify-center w-12 h-12 cursor-pointer rounded-lg
+                  flex items-center justify-center w-12 h-12 rounded-lg
                   text-stone-500 border-stone-200 border border-solid
                   dark:text-white dark:border-dark-mixed-300"
               >
                 <BellIcon />
-              </a>
+              </button>
             </div>
             <div className="hidden sm:flex relative items-center ml-2 lg:ml-4">
-              <a
+              <button
                 className="
-                  flex items-center justify-center w-12 h-12 cursor-pointer rounded-lg
+                  flex items-center justify-center w-12 h-12 rounded-lg
                   text-stone-500 border-stone-200 border border-solid
                   dark:text-white dark:border-dark-mixed-300"
-                role="button"
                 onClick={toggleDarkMode}
                 data-testid="toggle-dark-mode-button"
               >
                 {isDarkMode ? <MoonIcon /> : <SunIcon />}
-              </a>
+              </button>
             </div>
             <div className="hidden sm:flex relative items-center ml-2 lg:ml-4">
-              <a className="flex items-center justify-center w-12 h-12 cursor-pointer rounded-lg">
+              <button className="flex items-center justify-center w-12 h-12 rounded-lg">
                 {userAvatarUrl && (
                   <img
                     src={userAvatarUrl}
@@ -104,7 +103,7 @@ const Header: React.FC<HeaderProps> = ({
                     className="w-full h-full rounded-lg"
                   />
                 )}
-              </a>
+              </button>
             </div>
           </div>
         </div>
