@@ -28,3 +28,10 @@ export const getSessionUser = (): SessionUser | null => {
   const data = localStorage.getItem("sessionUser");
   return data ? JSON.parse(data) : null;
 };
+
+export const removeAll = () => {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+  localStorage.removeItem("sessionUser");
+}
+

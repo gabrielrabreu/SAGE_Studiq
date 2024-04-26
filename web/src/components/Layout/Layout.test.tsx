@@ -4,6 +4,11 @@ import { MemoryRouter } from "react-router-dom";
 import Layout from "./Layout";
 import userEvent from "@testing-library/user-event";
 
+const mockedGetSessionUser = jest.fn();
+jest.mock("../../utils/local-storage.utils", () => ({
+  getSessionUser: () => mockedGetSessionUser,
+}));
+
 describe("Layout", () => {
   it("should render", async () => {
     window.matchMedia = jest.fn().mockReturnValueOnce({ matches: true });
@@ -29,6 +34,11 @@ describe("Layout", () => {
 
   it("toggles dark mode when the header button is clicked", async () => {
     window.matchMedia = jest.fn().mockReturnValueOnce({ matches: true });
+    mockedGetSessionUser.mockReturnValueOnce({
+      avatarUrl: "",
+      name: "",
+      email: "",
+    });
 
     render(
       <MemoryRouter>
