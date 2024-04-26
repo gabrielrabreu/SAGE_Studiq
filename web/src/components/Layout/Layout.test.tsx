@@ -5,8 +5,10 @@ import Layout from "./Layout";
 import userEvent from "@testing-library/user-event";
 
 const mockedGetSessionUser = jest.fn();
+const mockedRemoveAll = jest.fn();
 jest.mock("../../utils/local-storage.utils", () => ({
   getSessionUser: () => mockedGetSessionUser,
+  removeAll: () => mockedRemoveAll,
 }));
 
 describe("Layout", () => {
@@ -54,5 +56,50 @@ describe("Layout", () => {
     expect(
       document.documentElement.classList.contains("dark")
     ).not.toBeTruthy();
+  });
+
+  it("should render user menu when click button to toggle it", async () => {
+    window.matchMedia = jest.fn().mockReturnValueOnce({ matches: true });
+    mockedGetSessionUser.mockReturnValueOnce({
+      avatarUrl: "",
+      name: "",
+      email: "",
+    });
+
+    render(
+      <MemoryRouter>
+        <Layout />
+      </MemoryRouter>
+    );
+
+    const toggleUserMenuButton = screen.getByTestId("toggle-user-menu-button");
+    await userEvent.click(toggleUserMenuButton);
+
+    const closeButton = screen.getByTestId("close-button");
+    expect(closeButton).toBeInTheDocument();
+
+    await userEvent.click(closeButton);
+    expect(closeButton).not.toBeInTheDocument();
+  });
+
+  it("should call onLogout when click button logout", async () => {
+    window.matchMedia = jest.fn().mockReturnValueOnce({ matches: true });
+    mockedGetSessionUser.mockReturnValueOnce({
+      avatarUrl: "",
+      name: "",
+      email: "",
+    });
+
+    render(
+      <MemoryRouter>
+        <Layout />
+      </MemoryRouter>
+    );
+
+    const toggleUserMenuButton = screen.getByTestId("toggle-user-menu-button");
+    await userEvent.click(toggleUserMenuButton);
+
+    const logoutButton = screen.getByTestId("logout-button");
+    await userEvent.click(logoutButton);
   });
 });
