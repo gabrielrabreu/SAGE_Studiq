@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
-import { getSessionUser } from "../../utils/local-storage.utils";
+import { getSessionUser, removeAll } from "../../utils/local-storage.utils";
+import UserMenu from "../UserMenu/UserMenu";
 
 const Layout: React.FC = () => {
   const sessionUser = getSessionUser();
+  const navigate = useNavigate();
 
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   useEffect(() => {
     const prefersDarkMode = window.matchMedia(
@@ -26,17 +29,31 @@ const Layout: React.FC = () => {
     }
   }, [isDarkMode]);
 
-  return (
+  return sessionUser ? (
     <div>
       <Header
-        userAvatarUrl={sessionUser?.avatarUrl}
+        userAvatarUrl={sessionUser.avatarUrl}
         isDarkMode={isDarkMode}
         toggleDarkMode={() => setIsDarkMode((prev) => !prev)}
+        toggleUserMenu={() => setIsUserMenuOpen((prev) => !prev)}
       />
       <main>
         <Outlet />
       </main>
+      <UserMenu
+        isOpen={isUserMenuOpen}
+        userAvatarUrl={sessionUser.avatarUrl}
+        userName={sessionUser.name}
+        userEmail={sessionUser.email}
+        onClose={() => setIsUserMenuOpen(false)}
+        onLogout={() => {
+          removeAll();
+          navigate("/auth/login");
+        }}
+      />
     </div>
+  ) : (
+    <Navigate to="/auth/login" replace />
   );
 };
 

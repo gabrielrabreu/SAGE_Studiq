@@ -19,7 +19,7 @@ const useAxiosMock = (axios: AxiosInstance) => {
         imageUrl:
           "https://static.vecteezy.com/system/resources/previews/000/116/431/large_2x/moon-phase-vector.jpg",
         title: "Lunar Cycle",
-        tags: ["Astronomy", "Moon", "Lunar Phases"],
+        tags: ["Astronomy", "Moon"],
         authorName: "John",
         authorAvatarUrl:
           "https://i.pinimg.com/originals/49/1f/be/491fbeda943fad7a06bd606a7e128fde.png",

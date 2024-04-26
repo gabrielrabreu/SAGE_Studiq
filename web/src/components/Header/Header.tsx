@@ -1,17 +1,26 @@
 import React from "react";
+import {
+  BellIcon,
+  MenuIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+  XIcon,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { BellIcon, MoonIcon, SearchIcon, SunIcon, XIcon } from "lucide-react";
 
 interface HeaderProps {
-  userAvatarUrl?: string;
+  userAvatarUrl: string;
   isDarkMode: boolean;
   toggleDarkMode: () => void;
+  toggleUserMenu: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
   userAvatarUrl,
   isDarkMode,
   toggleDarkMode,
+  toggleUserMenu,
 }) => {
   return (
     <header
@@ -20,33 +29,47 @@ const Header: React.FC<HeaderProps> = ({
         bg-white border-stone-200 border-b border-solid
         dark:bg-dark-mixed-100 dark:border-dark-mixed-300"
     >
-      <div className="px-3 mx-auto w-11/12 rounded-xl">
-        <div className="sm:flex items-stretch justify-between grow lg:mb-0 py-3 px-5">
-          <div className="flex items-center justify-center mb-5 mr-3 lg:mb-0">
-            <span
-              className="
-                my-0 flex font-semibold text-2xl flex-col justify-center 
-                text-dark
-                dark:text-white"
-            >
-              studiq
-            </span>
-            <ul className="flex ml-4">
-              <li className="ml-2">
-                <NavLink
-                  to="/auth/login"
-                  className="
+      <div className="mx-auto w-11/12 rounded-xl">
+        <div className="flex items-stretch justify-between grow py-3">
+          <div className="flex items-center gap-2">
+            <div className="hidden relative items-center">
+              <button
+                className="
+                  flex items-center justify-center w-12 h-12 rounded-lg
+                  text-stone-500 border-stone-200 border border-solid
+                  dark:text-white dark:border-dark-mixed-300"
+              >
+                <MenuIcon />
+              </button>
+            </div>
+            <div className="flex relative items-center ml-2">
+              <button
+                className="
+                  flex items-center justify-center w-12 h-12 rounded-full
+                  border-stone-200 border 
+                  dark:border-dark-mixed-300"
+              >
+                <img
+                  src="logo.png"
+                  alt="Logo"
+                  className="w-full h-full rounded-full"
+                />
+              </button>
+            </div>
+            <div className="flex relative items-center ml-2">
+              <NavLink
+                to="/"
+                className="
                     font-semibold 
                     text-dark 
                     dark:text-white"
-                >
-                  Home
-                </NavLink>
-              </li>
-            </ul>
+              >
+                Home
+              </NavLink>
+            </div>
           </div>
-          <div className="flex items-center lg:shrink-0 lg:flex-nowrap">
-            <div className="hidden relative items-center lg:ml-4 sm:mr-0 mr-2">
+          <div className="flex items-center gap-2">
+            <div className="hidden relative items-center">
               <span
                 className="
                   absolute ml-4 leading-none -translate-y-1/2 top-1/2 
@@ -72,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({
                 <XIcon />
               </span>
             </div>
-            <div className="hidden relative items-center ml-2 lg:ml-4">
+            <div className="hidden relative items-center">
               <button
                 className="
                   flex items-center justify-center w-12 h-12 rounded-lg
@@ -82,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({
                 <BellIcon />
               </button>
             </div>
-            <div className="hidden sm:flex relative items-center ml-2 lg:ml-4">
+            <div className="flex relative items-center">
               <button
                 className="
                   flex items-center justify-center w-12 h-12 rounded-lg
@@ -94,15 +117,20 @@ const Header: React.FC<HeaderProps> = ({
                 {isDarkMode ? <MoonIcon /> : <SunIcon />}
               </button>
             </div>
-            <div className="hidden sm:flex relative items-center ml-2 lg:ml-4">
-              <button className="flex items-center justify-center w-12 h-12 rounded-lg">
-                {userAvatarUrl && (
-                  <img
-                    src={userAvatarUrl}
-                    alt="User Avatar"
-                    className="w-full h-full rounded-lg"
-                  />
-                )}
+            <div className="flex relative items-center">
+              <button
+                className="
+                  flex items-center justify-center w-12 h-12 rounded-full
+                  border-stone-200 border 
+                  dark:border-dark-mixed-300"
+                data-testid="toggle-user-menu-button"
+                onClick={toggleUserMenu}
+              >
+                <img
+                  src={userAvatarUrl}
+                  alt="User Avatar"
+                  className="w-full h-full rounded-full"
+                />
               </button>
             </div>
           </div>
