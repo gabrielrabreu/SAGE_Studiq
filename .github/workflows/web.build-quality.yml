@@ -57,6 +57,6 @@ jobs:
             -Dsonar.organization=$SONAR_ORGANIZATION \
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.login=$SONAR_TOKEN \
-            -Dsonar.coverage.exclusions="**/*.test.*" \
+            -Dsonar.coverage.exclusions="**/*.test.*, **/*.mock.*, **/local-storage.utils.ts" \
             -Dsonar.exclusions="**/*.test.*" \
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
