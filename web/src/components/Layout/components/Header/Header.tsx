@@ -28,6 +28,7 @@ const Header: React.FC<HeaderProps> = ({
         md:sticky lg:top-0 flex flex-wrap
         bg-white border-stone-200 border-b border-solid
         dark:bg-dark-mixed-100 dark:border-dark-mixed-300"
+      data-testid="header-div"
     >
       <div className="mx-auto w-11/12 rounded-xl">
         <div className="flex items-stretch justify-between grow py-3">
@@ -63,6 +64,7 @@ const Header: React.FC<HeaderProps> = ({
                     font-semibold 
                     text-dark 
                     dark:text-white"
+                data-testid="home-link"
               >
                 Home
               </NavLink>

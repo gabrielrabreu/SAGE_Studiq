@@ -1,10 +1,10 @@
 import { AxiosInstance } from "axios";
 import MockAdapter from "axios-mock-adapter";
 
-export const useAxiosMock = (axios: AxiosInstance) => {
+const setupAxiosMock = (axios: AxiosInstance) => {
   const mock = new MockAdapter(axios);
 
-  mock.onPost("/api/login").reply(200, {
+  mock.onPost("/login").reply(200, {
     accessToken: "5efb5f8a-212b-4b22-a201-ba2958005342",
     refreshToken: "91728235-6dab-4a00-93dc-9affb0b0747a",
     userName: "John Doe",
@@ -13,7 +13,7 @@ export const useAxiosMock = (axios: AxiosInstance) => {
       "https://i.pinimg.com/originals/dc/28/a7/dc28a77f18bfc9aaa51c3f61080edda5.jpg",
   });
 
-  mock.onGet("/api/recent-activities").reply(200, {
+  mock.onGet("/recent-activities").reply(200, {
     items: [
       {
         id: 1,
@@ -58,3 +58,5 @@ export const useAxiosMock = (axios: AxiosInstance) => {
     ],
   });
 };
+
+export default setupAxiosMock;

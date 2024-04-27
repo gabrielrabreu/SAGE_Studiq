@@ -15,6 +15,7 @@ const RecentActivities: React.FC<RecentActivitiesProps> = ({ items }) => {
           font-semibold py-4
           text-black
           dark:text-white"
+        data-testid="home-title"
       >
         Recent Activities
       </h1>

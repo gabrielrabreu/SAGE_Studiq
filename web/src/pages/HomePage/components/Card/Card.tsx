@@ -7,7 +7,7 @@ interface CardProps {
   tags: string[];
   authorName: string;
   authorAvatarUrl: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -45,14 +45,14 @@ const Card: React.FC<CardProps> = ({
             {title}
           </div>
           <div className="flex flex-wrap gap-1">
-            {tags.map((tag, index) => (
+            {tags.map((tag) => (
               <span
                 key={uuidv4()}
                 className="
                   rounded-lg py-1.5 px-3 text-xs font-bold uppercase
                    bg-white text-black border border-stone-200 
                    dark:bg-dark-mixed-400 dark:text-white dark:border-dark-mixed-400"
-                data-testid={`card-tag-${index}`}
+                data-testid="card-tag"
               >
                 {tag}
               </span>

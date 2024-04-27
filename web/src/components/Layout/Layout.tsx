@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
   }
 
   return (
-    <div>
+    <div data-testid="layout-div">
       <Header
         userAvatarUrl={user.avatarUrl}
         isDarkMode={isDarkMode}

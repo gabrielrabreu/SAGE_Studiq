@@ -19,7 +19,10 @@ const UserMenu: React.FC<UserMenuProps> = ({
 }) => {
   return (
     isOpen && (
-      <div className="fixed inset-0 z-50 overflow-hidden">
+      <div
+        className="fixed inset-0 z-50 overflow-hidden"
+        data-testid="user-menu-div"
+      >
         <section className="absolute inset-y-0 right-0 pl-10 max-w-full flex">
           <div className="w-screen max-w-sm">
             <div

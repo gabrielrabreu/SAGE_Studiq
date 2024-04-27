@@ -27,6 +27,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
       onSubmit={handleSubmit((data) => {
         onLogin(data);
       })}
+      data-testid="login-form"
     >
       <div className="mt-8 content-center">
         <label
@@ -103,7 +104,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           className="
             w-full flex justify-center p-4 rounded-full tracking-wide font-semibold cursor-pointer
             text-white bg-gradient-to-r from-dark-primary-700 to-dark-primary-600"
-          data-testid="submit-button"
+          data-testid="signin-button"
         >
           Sign in
         </button>

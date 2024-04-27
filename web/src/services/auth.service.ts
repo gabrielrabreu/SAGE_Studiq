@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+
 import axiosInstance from "../libs/axios/axios.config";
 import { LoginFormValues } from "../pages/LoginPage/components/LoginForm/LoginForm";
 
@@ -14,7 +15,7 @@ const authService = {
   login: async (
     data: LoginFormValues
   ): Promise<AxiosResponse<LoginResult, LoginFormValues>> => {
-    return await axiosInstance.post("api/login", data);
+    return await axiosInstance.post("login", data);
   },
 };
 

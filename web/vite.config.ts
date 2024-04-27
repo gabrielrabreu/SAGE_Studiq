@@ -1,10 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import istanbul from "vite-plugin-istanbul";
+import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), istanbul({ cypress: true, requireEnv: false })],
   server: {
-    host: "0.0.0.0"
-  }
-})
+    host: true,
+    port: 3000,
+  },
+});

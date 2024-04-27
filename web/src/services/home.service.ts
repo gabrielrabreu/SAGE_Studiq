@@ -19,7 +19,7 @@ const homeService = {
   recentActivities: async (): Promise<
     AxiosResponse<RecentActivitiesResult, void>
   > => {
-    return await axiosInstance.get("api/recent-activities");
+    return await axiosInstance.get("recent-activities");
   },
 };
 

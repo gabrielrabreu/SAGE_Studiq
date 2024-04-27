@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/116/431/large_2x/moon-phase-vector.jpg",
+      "title": "Lunar Cycle",
+      "tags": ["Astronomy", "Moon"],
+      "authorName": "John",
+      "authorAvatarUrl": "https://i.pinimg.com/originals/49/1f/be/491fbeda943fad7a06bd606a7e128fde.png"
+    },
+    {
+      "id": 1,
+      "imageUrl": "https://i.pinimg.com/736x/51/3a/44/513a4439da7c2959feb87ab36bfa5dc9.jpg",
+      "title": "World War I",
+      "tags": ["History", "World Wars"],
+      "authorName": "Maria",
+      "authorAvatarUrl": "https://pbs.twimg.com/profile_images/1632175365807546368/Uu9834NN_400x400.jpg"
+    }
+  ]
+}
