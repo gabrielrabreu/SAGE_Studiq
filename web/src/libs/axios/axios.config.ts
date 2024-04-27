@@ -4,7 +4,8 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
-import { getAccessToken } from "../../utils/local-storage.utils";
+
+import localStorageUtils from "../../utils/local-storage.utils";
 
 interface ApiError {
   message: string;
@@ -13,7 +14,7 @@ interface ApiError {
 const onRequest = (
   config: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig => {
-  const accessToken = getAccessToken();
+  const accessToken = localStorageUtils.getAccessToken();
 
   if (accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`;
@@ -47,7 +48,7 @@ const setupInterceptorsTo = (axiosInstance: AxiosInstance): AxiosInstance => {
 };
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.example.com",
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

@@ -1,37 +1,32 @@
-interface SessionUser {
+export interface User {
   name: string;
   email: string;
   avatarUrl: string;
 }
 
-export const setAccessToken = (accessToken: string) => {
-  localStorage.setItem("accessToken", accessToken);
+const localStorageUtils = {
+  setAccessToken: (accessToken: string) => {
+    localStorage.setItem("accessToken", accessToken);
+  },
+
+  getAccessToken: (): string | null => {
+    return localStorage.getItem("accessToken");
+  },
+
+  setUser: (user: User) => {
+    localStorage.setItem("user", JSON.stringify(user));
+  },
+
+  getUser: (): User | null => {
+    const data = localStorage.getItem("user");
+    return data ? JSON.parse(data) : null;
+  },
+
+  removeAll: () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
+  },
 };
 
-export const getAccessToken = (): string | null => {
-  return localStorage.getItem("accessToken");
-};
-
-export const setRefreshToken = (refreshToken: string) => {
-  localStorage.setItem("refreshToken", refreshToken);
-};
-
-export const getRefreshToken = (): string | null => {
-  return localStorage.getItem("refreshToken");
-};
-
-export const setSessionUser = (sessionUser: SessionUser) => {
-  localStorage.setItem("sessionUser", JSON.stringify(sessionUser));
-};
-
-export const getSessionUser = (): SessionUser | null => {
-  const data = localStorage.getItem("sessionUser");
-  return data ? JSON.parse(data) : null;
-};
-
-export const removeAll = () => {
-  localStorage.removeItem("accessToken");
-  localStorage.removeItem("refreshToken");
-  localStorage.removeItem("sessionUser");
-}
-
+export default localStorageUtils;

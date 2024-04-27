@@ -6,7 +6,10 @@ interface SocialLoginProps {
 
 const SocialLogin: React.FC<SocialLoginProps> = ({ onSocialLogin }) => {
   return (
-    <div className="flex flex-row justify-center items-center space-x-3">
+    <div
+      className="flex flex-row justify-center items-center space-x-3"
+      data-testid="social-login-div"
+    >
       <button
         className="
           w-11 h-11 items-center justify-center inline-flex rounded-2xl font-bold text-lg

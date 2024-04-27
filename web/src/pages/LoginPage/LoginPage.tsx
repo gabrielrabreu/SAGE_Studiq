@@ -1,30 +1,19 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import SocialLogin from "./components/SocialLogin/SocialLogin";
 import LoginForm, { LoginFormValues } from "./components/LoginForm/LoginForm";
-import { login } from "../../services/auth.service";
-import {
-  setAccessToken,
-  setRefreshToken,
-  setSessionUser,
-} from "../../utils/local-storage.utils";
+import { useAuth } from "../../hooks/useAuth";
+import authService from "../../services/auth.service";
 
 const LoginPage: React.FC = () => {
-  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (data: LoginFormValues) => {
-    await login(data)
+    await authService
+      .login(data)
       .then((response) => {
-        setAccessToken(response.data.accessToken);
-        setRefreshToken(response.data.refreshToken);
-        setSessionUser({
-          name: response.data.userName,
-          email: response.data.userEmail,
-          avatarUrl: response.data.userAvatarUrl,
-        });
-        navigate("/");
+        login(response.data);
       })
       .catch((error) => {
         toast.error(error.message);
