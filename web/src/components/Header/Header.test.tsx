@@ -9,7 +9,7 @@ describe("Header", () => {
     render(
       <MemoryRouter>
         <Header
-          userAvatarUrl="https://i.pinimg.com/originals/dc/28/a7/dc28a77f18bfc9aaa51c3f61080edda5.jpg"
+          userAvatarUrl="avatar.jpg"
           isDarkMode={false}
           toggleDarkMode={jest.fn()}
           toggleUserMenu={jest.fn()}
@@ -18,13 +18,13 @@ describe("Header", () => {
     );
   });
 
-  it("should call toggleDarkMode when click on button", async () => {
+  it("should call toggleDarkMode on click", async () => {
     const mockedToggleDarkMode = jest.fn();
 
     render(
       <MemoryRouter>
         <Header
-          userAvatarUrl="https://i.pinimg.com/originals/dc/28/a7/dc28a77f18bfc9aaa51c3f61080edda5.jpg"
+          userAvatarUrl="avatar.jpg"
           isDarkMode={false}
           toggleDarkMode={mockedToggleDarkMode}
           toggleUserMenu={jest.fn()}
@@ -39,13 +39,13 @@ describe("Header", () => {
     expect(mockedToggleDarkMode).toHaveBeenCalledTimes(1);
   });
 
-  it("should call toggleUserMenu when click on button", async () => {
+  it("should call toggleUserMenu on click", async () => {
     const mockedToggleUserMenu = jest.fn();
 
     render(
       <MemoryRouter>
         <Header
-          userAvatarUrl="https://i.pinimg.com/originals/dc/28/a7/dc28a77f18bfc9aaa51c3f61080edda5.jpg"
+          userAvatarUrl="avatar.jpg"
           isDarkMode={false}
           toggleDarkMode={jest.fn()}
           toggleUserMenu={mockedToggleUserMenu}

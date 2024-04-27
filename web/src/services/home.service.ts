@@ -2,7 +2,8 @@ import { AxiosResponse } from "axios";
 
 import axiosInstance from "../libs/axios/axios.config";
 
-export interface RecentActivitiesItem {
+export interface RecentActivitiesItemResult {
+  id: string;
   imageUrl: string;
   title: string;
   tags: string[];
@@ -10,12 +11,16 @@ export interface RecentActivitiesItem {
   authorAvatarUrl: string;
 }
 
-export interface RecentActivities {
-  items: RecentActivitiesItem[];
+export interface RecentActivitiesResult {
+  items: RecentActivitiesItemResult[];
 }
 
-export const recentActivities = async (): Promise<
-  AxiosResponse<RecentActivities, void>
-> => {
-  return await axiosInstance.get("api/recent-activities");
+const homeService = {
+  recentActivities: async (): Promise<
+    AxiosResponse<RecentActivitiesResult, void>
+  > => {
+    return await axiosInstance.get("api/recent-activities");
+  },
 };
+
+export default homeService;

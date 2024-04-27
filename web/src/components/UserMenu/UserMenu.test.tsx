@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import UserMenu from "./UserMenu";
 
 describe("UserMenu", () => {
@@ -7,7 +8,7 @@ describe("UserMenu", () => {
     render(
       <UserMenu
         isOpen={true}
-        userAvatarUrl="userAvatarUrl"
+        userAvatarUrl="avatar.png"
         userName="userName"
         userEmail="userEmail"
         onClose={jest.fn()}
@@ -16,13 +17,13 @@ describe("UserMenu", () => {
     );
   });
 
-  it("should call onClose when click on button", async () => {
+  it("should call onClose on click", async () => {
     const mockedOnClose = jest.fn();
 
     render(
       <UserMenu
         isOpen={true}
-        userAvatarUrl="userAvatarUrl"
+        userAvatarUrl="avatar.png"
         userName="userName"
         userEmail="userEmail"
         onClose={mockedOnClose}
@@ -37,13 +38,13 @@ describe("UserMenu", () => {
     expect(mockedOnClose).toHaveBeenCalledTimes(1);
   });
 
-  it("should call onLogout when click on button", async () => {
+  it("should call onLogout on click", async () => {
     const mockedOnLogout = jest.fn();
 
     render(
       <UserMenu
         isOpen={true}
-        userAvatarUrl="userAvatarUrl"
+        userAvatarUrl="avatar.png"
         userName="userName"
         userEmail="userEmail"
         onClose={jest.fn()}

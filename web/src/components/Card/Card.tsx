@@ -7,6 +7,7 @@ interface CardProps {
   tags: string[];
   authorName: string;
   authorAvatarUrl: string;
+  onClick: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -15,6 +16,7 @@ const Card: React.FC<CardProps> = ({
   tags,
   authorName,
   authorAvatarUrl,
+  onClick,
 }) => {
   return (
     <article
@@ -22,6 +24,8 @@ const Card: React.FC<CardProps> = ({
         rounded-lg p-4 flex flex-col justify-between 
         bg-white border 
         dark:bg-dark-mixed-300 dark:border-dark-mixed-300"
+      onClick={onClick}
+      data-testid="card"
     >
       <div>
         <img

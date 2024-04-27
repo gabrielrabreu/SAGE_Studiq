@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import {
   BellIcon,
   MenuIcon,
@@ -7,7 +8,6 @@ import {
   SunIcon,
   XIcon,
 } from "lucide-react";
-import { NavLink } from "react-router-dom";
 
 interface HeaderProps {
   userAvatarUrl: string;
