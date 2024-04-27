@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import RecentActivities from "../../components/RecentActivities/RecentActivities";
+import RecentActivities from "./components/RecentActivities/RecentActivities";
 import { RecentActivitiesResult } from "../../services/home.service";
 import homeService from "./../../services/home.service";
 

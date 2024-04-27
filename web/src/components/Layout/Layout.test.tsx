@@ -14,7 +14,7 @@ jest.mock("../../hooks/useAuth", () => ({
 }));
 
 const mockSetIsDarkMode = jest.fn();
-jest.mock("../../hooks/useDarkMode", () => ({
+jest.mock("./hooks/useDarkMode", () => ({
   __esModule: true,
   useDarkMode: () => [false, mockSetIsDarkMode],
 }));

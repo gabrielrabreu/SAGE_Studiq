@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 import Card from "../Card/Card";
-import { RecentActivitiesItemResult } from "../../services/home.service";
+import { RecentActivitiesItemResult } from "../../../../services/home.service";
 
 interface RecentActivitiesProps {
   items: RecentActivitiesItemResult[];

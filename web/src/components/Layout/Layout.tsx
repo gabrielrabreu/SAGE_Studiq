@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-import UserMenu from "../UserMenu/UserMenu";
-import Header from "../../components/Header/Header";
-import { useDarkMode } from "../../hooks/useDarkMode";
+import UserMenu from "./components/UserMenu/UserMenu";
+import { useDarkMode } from "./hooks/useDarkMode";
+import Header from "./components/Header/Header";
 import { useAuth } from "../../hooks/useAuth";
 
 const Layout: React.FC = () => {
