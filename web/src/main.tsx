@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import App from "./containers/App.tsx";
+import App from "./App/App.tsx";
 
 import "./index.css";
 
