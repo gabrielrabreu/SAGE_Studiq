@@ -14,6 +14,7 @@ describe("Login", () => {
       cy.getByTestId("Login_password_input").type("Pass!123");
       cy.getByTestId("Login_submit_button").click();
       cy.getByTestId("Login_title").should("be.visible");
+      cy.getToastify().should("be.visible");
     });
   });
 
