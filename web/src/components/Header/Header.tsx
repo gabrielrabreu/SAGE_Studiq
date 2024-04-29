@@ -24,6 +24,11 @@ const _Header: React.FC<Props> = ({ user }) => {
 
   const [isMenuVisible, setMenuVisible] = useState(false);
 
+  const toggleMenuVisibility = () => {
+    // Alterando o estado usando o setter setMenuVisible
+    setMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible);
+  };
+
   return (
     <header
       className="
@@ -76,20 +81,16 @@ const _Header: React.FC<Props> = ({ user }) => {
                   flex items-center justify-center w-12 h-12 rounded-full
                   border-stone-200 border 
                   dark:border-dark-mixed-300"
+                onClick={toggleMenuVisibility}
+                data-testid="Header_userAvatar_button"
               >
-                <img
-                  src={user?.avatarUrl}
-                  alt="User Avatar"
-                  className="w-full h-full rounded-full"
-                  onClick={() => setMenuVisible(true)}
-                  data-testid="Header_userAvatar_img"
-                />
+                <img src={user?.avatarUrl} alt="User Avatar" className="w-full h-full rounded-full" />
               </button>
             </div>
           </div>
         </div>
       </div>
-      <UserMenu isVisible={isMenuVisible} onClose={() => setMenuVisible(false)} />
+      <UserMenu isVisible={isMenuVisible} onClose={toggleMenuVisibility} />
     </header>
   );
 };

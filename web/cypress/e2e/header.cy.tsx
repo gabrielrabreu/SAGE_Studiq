@@ -10,15 +10,15 @@ describe("Header", () => {
       cy.getByTestId("Header_logo_img").should("be.visible");
       cy.getByTestId("Header_home_link").should("be.visible");
       cy.getByTestId("Header_darkMode_button").should("be.visible");
-      cy.getByTestId("Header_userAvatar_img").should("be.visible");
+      cy.getByTestId("Header_userAvatar_button").should("be.visible");
     });
 
     it("should open right menu on click", () => {
       cy.visit("/");
 
-      cy.getByTestId("Header_userAvatar_img").click();
+      cy.getByTestId("Header_userAvatar_button").click();
 
-      cy.getByTestId("Header_userAvatar_img").should("not.be.visible");
+      cy.getByTestId("Header_userAvatar_button").should("not.be.visible");
       cy.getByTestId("RightMenu_username_span").contains("John Doe");
       cy.getByTestId("RightMenu_email_span").contains("johndoe@gmail.com");
     });
@@ -26,18 +26,18 @@ describe("Header", () => {
     it("should close right menu on click", () => {
       cy.visit("/");
 
-      cy.getByTestId("Header_userAvatar_img").should("be.visible");
-      cy.getByTestId("Header_userAvatar_img").click();
+      cy.getByTestId("Header_userAvatar_button").should("be.visible");
+      cy.getByTestId("Header_userAvatar_button").click();
 
-      cy.getByTestId("Header_userAvatar_img").should("not.be.visible");
+      cy.getByTestId("Header_userAvatar_button").should("not.be.visible");
       cy.getByTestId("RightMenu_close_button").click();
-      cy.getByTestId("Header_userAvatar_img").should("be.visible");
+      cy.getByTestId("Header_userAvatar_button").should("be.visible");
     });
 
     it("should logout on click", () => {
       cy.visit("/");
 
-      cy.getByTestId("Header_userAvatar_img").click();
+      cy.getByTestId("Header_userAvatar_button").click();
       cy.getByTestId("RightMenu_logout_button").click();
 
       cy.getByTestId("Login_title").should("be.visible");

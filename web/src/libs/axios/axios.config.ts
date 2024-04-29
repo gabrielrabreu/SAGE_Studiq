@@ -5,7 +5,7 @@ interface ApiError {
 }
 
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-  const userJson = localStorage.getItem("user") || "{}";
+  const userJson = localStorage.getItem("user") ?? "{}";
   const user = JSON.parse(userJson) as IUser;
   const accessToken = user.accessToken;
 
