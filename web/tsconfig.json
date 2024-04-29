@@ -5,7 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "esModuleInterop": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -19,8 +18,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src", "./setupTests.ts"],
+  "include": ["src", "cypress.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,47 +1,44 @@
-import React from "react";
-import {
-  BellIcon,
-  MenuIcon,
-  MoonIcon,
-  SearchIcon,
-  SunIcon,
-  XIcon,
-} from "lucide-react";
+import { useState } from "react";
+import { ConnectedProps, connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { MoonIcon, SunIcon } from "lucide-react";
 
-interface HeaderProps {
-  userAvatarUrl: string;
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
-  toggleUserMenu: () => void;
-}
+import { PATH } from "@/constants/paths";
+import { RootState } from "@/store/store";
 
-const Header: React.FC<HeaderProps> = ({
-  userAvatarUrl,
-  isDarkMode,
-  toggleDarkMode,
-  toggleUserMenu,
-}) => {
+import { UserMenu } from "./UserMenu";
+import { useDarkMode } from "./useDarkMode";
+
+const mapStateToProps = (state: RootState) => ({
+  user: state.authReducer.user,
+});
+
+const mapDispatchToProps = {};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+interface Props extends ConnectedProps<typeof connector> {}
+
+const _Header: React.FC<Props> = ({ user }) => {
+  const [isDarkMode, setIsDarkMode] = useDarkMode();
+
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  const toggleMenuVisibility = () => {
+    setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible);
+  };
+
   return (
     <header
       className="
         md:sticky lg:top-0 flex flex-wrap
         bg-white border-stone-200 border-b border-solid
         dark:bg-dark-mixed-100 dark:border-dark-mixed-300"
+      data-testid="Header"
     >
       <div className="mx-auto w-11/12 rounded-xl">
         <div className="flex items-stretch justify-between grow py-3">
           <div className="flex items-center gap-2">
-            <div className="hidden relative items-center">
-              <button
-                className="
-                  flex items-center justify-center w-12 h-12 rounded-lg
-                  text-stone-500 border-stone-200 border border-solid
-                  dark:text-white dark:border-dark-mixed-300"
-              >
-                <MenuIcon />
-              </button>
-            </div>
             <div className="flex relative items-center ml-2">
               <button
                 className="
@@ -49,72 +46,37 @@ const Header: React.FC<HeaderProps> = ({
                   border-stone-200 border 
                   dark:border-dark-mixed-300"
               >
-                <img
-                  src="logo.png"
-                  alt="Logo"
-                  className="w-full h-full rounded-full"
-                />
+                <img src="logo.png" alt="Logo" className="w-full h-full rounded-full" data-testid="Header_logo_img" />
               </button>
             </div>
             <div className="flex relative items-center ml-2">
               <NavLink
-                to="/"
+                to={PATH.HOME}
                 className="
-                    font-semibold 
-                    text-dark 
-                    dark:text-white"
+                  font-semibold 
+                  text-dark 
+                  dark:text-white"
+                data-testid="Header_home_link"
               >
                 Home
               </NavLink>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="hidden relative items-center">
-              <span
-                className="
-                  absolute ml-4 leading-none -translate-y-1/2 top-1/2 
-                  text-stone-500
-                  dark:text-white"
-              >
-                <SearchIcon />
-              </span>
-              <input
-                className="
-                  block w-full min-w-[70px] py-3 pl-12 pr-4 text-base font-medium leading-normal placeholder:text-secondary-dark peer outline-none appearance-none bg-clip-padding rounded-lg
-                  bg-white text-stone-500 border-stone-200 border border-solid
-                  dark:bg-dark-mixed-300 dark:text-white dark:border-dark-mixed-300"
-                placeholder="Search..."
-                type="text"
-              />
-              <span
-                className="
-                  absolute right-0 left-auto mr-4 leading-none -translate-y-1/2 peer-placeholder-shown:hidden top-1/2
-                  text-stone-500
-                  dark:text-white"
-              >
-                <XIcon />
-              </span>
-            </div>
-            <div className="hidden relative items-center">
-              <button
-                className="
-                  flex items-center justify-center w-12 h-12 rounded-lg
-                  text-stone-500 border-stone-200 border border-solid
-                  dark:text-white dark:border-dark-mixed-300"
-              >
-                <BellIcon />
-              </button>
-            </div>
             <div className="flex relative items-center">
               <button
                 className="
                   flex items-center justify-center w-12 h-12 rounded-lg
                   text-stone-500 border-stone-200 border border-solid
                   dark:text-white dark:border-dark-mixed-300"
-                onClick={toggleDarkMode}
-                data-testid="toggle-dark-mode-button"
+                onClick={() => setIsDarkMode((prev) => !prev)}
+                data-testid="Header_darkMode_button"
               >
-                {isDarkMode ? <MoonIcon /> : <SunIcon />}
+                {isDarkMode ? (
+                  <MoonIcon data-testid="Header_darkMode_MoonIcon" />
+                ) : (
+                  <SunIcon data-testid="Header_darkMode_SunIcon" />
+                )}
               </button>
             </div>
             <div className="flex relative items-center">
@@ -123,21 +85,20 @@ const Header: React.FC<HeaderProps> = ({
                   flex items-center justify-center w-12 h-12 rounded-full
                   border-stone-200 border 
                   dark:border-dark-mixed-300"
-                data-testid="toggle-user-menu-button"
-                onClick={toggleUserMenu}
+                onClick={toggleMenuVisibility}
+                data-testid="Header_userAvatar_button"
               >
-                <img
-                  src={userAvatarUrl}
-                  alt="User Avatar"
-                  className="w-full h-full rounded-full"
-                />
+                <img src={user?.avatarUrl} alt="User Avatar" className="w-full h-full rounded-full" />
               </button>
             </div>
           </div>
         </div>
       </div>
+      <UserMenu isVisible={isMenuVisible} onClose={toggleMenuVisibility} />
     </header>
   );
 };
 
-export default Header;
+const Header = connector(_Header);
+
+export { Header };
