@@ -22,10 +22,10 @@ interface Props extends ConnectedProps<typeof connector> {}
 const _Header: React.FC<Props> = ({ user }) => {
   const [isDarkMode, setIsDarkMode] = useDarkMode();
 
-  const [isMenuVisible, setMenuVisible] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const toggleMenuVisibility = () => {
-    setMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible);
+    setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible);
   };
 
   return (

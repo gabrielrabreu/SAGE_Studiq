@@ -9,7 +9,7 @@ export const login = createAsyncThunk("auth/login", async (data: ReqLogin) => {
     .then((response) => response.data)
     .catch((error) => {
       toast.error(error.message);
-      return Promise.reject(error);
+      return Promise.reject(new Error(error.message));
     });
 });
 
@@ -26,6 +26,6 @@ export const loadUser = createAsyncThunk("auth/load", async () => {
     .then((response) => response.data)
     .catch((error) => {
       toast.error(error.message);
-      return Promise.reject(error);
+      return Promise.reject(new Error(error.message));
     });
 });
