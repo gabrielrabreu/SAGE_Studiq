@@ -31,13 +31,13 @@ const onResponseError = async (error: AxiosError): Promise<AxiosResponse> => {
   return Promise.reject(error);
 };
 
-const setupInterceptorsTo = (axiosInstance: AxiosInstance): AxiosInstance => {
-  axiosInstance.interceptors.request.use(onRequest, onRequestError);
-  axiosInstance.interceptors.response.use(onResponse, onResponseError);
-  return axiosInstance;
+const setupInterceptorsTo = (httpClient: AxiosInstance): AxiosInstance => {
+  httpClient.interceptors.request.use(onRequest, onRequestError);
+  httpClient.interceptors.response.use(onResponse, onResponseError);
+  return httpClient;
 };
 
-const axiosInstance = axios.create({
+const httpClient = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000,
   headers: {
@@ -45,6 +45,6 @@ const axiosInstance = axios.create({
   },
 });
 
-setupInterceptorsTo(axiosInstance);
+setupInterceptorsTo(httpClient);
 
-export default axiosInstance;
+export default httpClient;

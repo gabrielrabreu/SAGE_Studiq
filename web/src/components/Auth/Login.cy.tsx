@@ -3,11 +3,11 @@ import MockAdapter from "axios-mock-adapter";
 import { expect } from "chai";
 
 import { renderWithProvider } from "@/utils/test-utils";
-import axiosInstance from "@/libs/axios/axios.config";
+import httpClient from "@/libs/axios/axios.config";
 
 import { Login } from "./Login";
 
-const mockAxios = new MockAdapter(axiosInstance);
+const mockAxios = new MockAdapter(httpClient);
 
 describe("Login", () => {
   context("success", () => {
@@ -107,7 +107,7 @@ describe("Login", () => {
           expect(state.authReducer.loading).to.equal(false);
           expect(state.authReducer.isAuthenticated).to.equal(false);
           expect(state.authReducer.user).to.equal(undefined);
-          expect(state.authReducer.error).to.equal(`Error: ${data.message}`);
+          expect(state.authReducer.error).to.equal(data.message);
         });
     });
   });

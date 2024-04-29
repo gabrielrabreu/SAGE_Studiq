@@ -15,8 +15,10 @@ export const renderWithProvider = (ui: React.ReactElement, preloadedState?: Root
 
   const Wrapper = ({ children }: PropsWithChildren) => <Provider store={store}>{children}</Provider>;
 
+  const Component = cy.mount(<Wrapper>{ui}</Wrapper>);
+
   return {
     store,
-    ...cy.mount(<Wrapper>{ui}</Wrapper>),
+    Component,
   };
 };

@@ -1,17 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-import axiosInstance from "@/libs/axios/axios.config";
+import httpClient from "@/libs/axios/axios.config";
 
 export const login = createAsyncThunk("auth/login", async (data: ReqLogin) => {
-  return await axiosInstance
+  return await httpClient
     .post<IUser>("login", data)
-    .then((response) => {
-      return response.data;
-    })
+    .then((response) => response.data)
     .catch((error) => {
       toast.error(error.message);
-      throw new Error(error);
+      return Promise.reject(error);
     });
 });
 
@@ -23,13 +21,11 @@ export const loadUser = createAsyncThunk("auth/load", async () => {
     throw new Error("Can't load user!");
   }
 
-  return await axiosInstance
+  return await httpClient
     .post<IUser>("info", { id })
-    .then((response) => {
-      return response.data;
-    })
+    .then((response) => response.data)
     .catch((error) => {
       toast.error(error.message);
-      throw new Error(error);
+      return Promise.reject(error);
     });
 });

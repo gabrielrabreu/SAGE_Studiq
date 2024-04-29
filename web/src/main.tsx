@@ -4,15 +4,15 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
 import App from "./App/App.tsx";
-import setupAxiosMock from "./libs/axios/axios.mock.ts";
-import axiosInstance from "./libs/axios/axios.config.ts";
+import setupAxiosSandbox from "./libs/axios/axios.sandbox.ts";
+import httpClient from "./libs/axios/axios.config.ts";
 import { store } from "./store/store.ts";
 
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
 if (import.meta.env.MODE === "sandbox") {
-  setupAxiosMock(axiosInstance);
+  setupAxiosSandbox(httpClient);
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

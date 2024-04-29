@@ -1,7 +1,7 @@
 import { AxiosInstance } from "axios";
 import MockAdapter from "axios-mock-adapter";
 
-const setupAxiosMock = (axios: AxiosInstance) => {
+const setupAxiosSandbox = (axios: AxiosInstance) => {
   const mock = new MockAdapter(axios);
 
   mock.onPost("/login").reply(200, {
@@ -21,4 +21,4 @@ const setupAxiosMock = (axios: AxiosInstance) => {
   });
 };
 
-export default setupAxiosMock;
+export default setupAxiosSandbox;

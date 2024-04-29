@@ -60,6 +60,6 @@ jobs:
             -Dsonar.organization=$SONAR_ORGANIZATION \
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.login=$SONAR_TOKEN \
-            -Dsonar.coverage.exclusions="cypress/**,**/axios.mock.ts" \
-            -Dsonar.exclusions="**/*.test.*" \
+            -Dsonar.coverage.exclusions="cypress/**/*.*, **/*.d.ts, **/*.cy.tsx, **/*.cy.ts, **/libs/**" \
+            -Dsonar.exclusions="**/*.cy.*" \
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
