@@ -38,12 +38,9 @@ jobs:
           npm ci
           npm run build
 
-      - name: Run server
+      - name: Run and test
         run: |
-          npm run dev
-
-      - name: Run cypress e2e
-        run: |
+          npm run dev &
           npm run cy:run-e2e
 
       - name: Run SonarCloud analysis
