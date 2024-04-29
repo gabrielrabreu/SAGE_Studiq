@@ -34,6 +34,7 @@ const _Header: React.FC<Props> = ({ user }) => {
         md:sticky lg:top-0 flex flex-wrap
         bg-white border-stone-200 border-b border-solid
         dark:bg-dark-mixed-100 dark:border-dark-mixed-300"
+      data-testid="Header"
     >
       <div className="mx-auto w-11/12 rounded-xl">
         <div className="flex items-stretch justify-between grow py-3">
@@ -71,7 +72,11 @@ const _Header: React.FC<Props> = ({ user }) => {
                 onClick={() => setIsDarkMode((prev) => !prev)}
                 data-testid="Header_darkMode_button"
               >
-                {isDarkMode ? <MoonIcon /> : <SunIcon />}
+                {isDarkMode ? (
+                  <MoonIcon data-testid="Header_darkMode_MoonIcon" />
+                ) : (
+                  <SunIcon data-testid="Header_darkMode_SunIcon" />
+                )}
               </button>
             </div>
             <div className="flex relative items-center">

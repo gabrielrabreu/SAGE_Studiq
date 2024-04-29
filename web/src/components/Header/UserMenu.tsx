@@ -24,7 +24,7 @@ interface Props extends ConnectedProps<typeof connector>, RouteProps {}
 const _UserMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
   return (
     isVisible && (
-      <div className="fixed inset-0 z-50 overflow-hidden">
+      <div className="fixed inset-0 z-50 overflow-hidden" data-testid="UserMenu">
         <section className="absolute inset-y-0 right-0 pl-10 max-w-full flex">
           <div className="w-screen max-w-sm">
             <div
@@ -51,7 +51,7 @@ const _UserMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
                         text-md font-medium 
                         text-black
                         dark:text-white"
-                      data-testid="RightMenu_username_span"
+                      data-testid="UserMenu_username_span"
                     >
                       {user?.username}
                     </span>
@@ -59,7 +59,7 @@ const _UserMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
                       className="
                         font-medium block text-sm 
                         text-dark-surface-500"
-                      data-testid="RightMenu_email_span"
+                      data-testid="UserMenu_email_span"
                     >
                       {user?.email}
                     </span>
@@ -69,7 +69,7 @@ const _UserMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
                   className="text-dark-surface-500"
                   type="button"
                   onClick={onClose}
-                  data-testid="RightMenu_close_button"
+                  data-testid="UserMenu_close_button"
                 >
                   <span className="sr-only">Close</span>
                   <XIcon />
@@ -89,7 +89,7 @@ const _UserMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
                   className="flex items-center px-2 py-2 my-2 rounded-md w-full"
                   type="button"
                   onClick={() => logout()}
-                  data-testid="RightMenu_logout_button"
+                  data-testid="UserMenu_logout_button"
                 >
                   Sign out
                 </button>

@@ -29,8 +29,8 @@ const _Login: React.FC<Props> = ({ isAuthenticated, login }) => {
     password: { required: "Password is required" },
   };
 
-  const onLogin = (data: ReqLogin) => {
-    login(data);
+  const onLogin = async (data: ReqLogin) => {
+    await login(data);
   };
 
   if (isAuthenticated) {
@@ -42,6 +42,7 @@ const _Login: React.FC<Props> = ({ isAuthenticated, login }) => {
       className="
         md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-2/5 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none 
         bg-white"
+      data-testid="Login"
     >
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
@@ -63,8 +64,8 @@ const _Login: React.FC<Props> = ({ isAuthenticated, login }) => {
         </div>
         <form
           className="mt-8 space-y-6"
-          onSubmit={handleSubmit((data) => {
-            onLogin(data);
+          onSubmit={handleSubmit(async (data) => {
+            await onLogin(data);
           })}
         >
           <div className="mt-8 content-center">

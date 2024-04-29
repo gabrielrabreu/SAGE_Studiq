@@ -38,7 +38,11 @@ jobs:
           npm ci
           npm run build
 
-      - name: Run and test
+      - name: Unit tests
+        run: |
+          npm run cy:run-unit
+
+      - name: E2E tests
         run: |
           npm run dev &
           npm run cy:run-e2e

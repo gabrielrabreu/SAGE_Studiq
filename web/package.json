@@ -12,7 +12,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "cy:open-e2e": "cypress open --e2e --browser edge",
-    "cy:run-e2e": "cypress run --e2e"
+    "cy:run-e2e": "cypress run --e2e",
+    "cy:open-unit": "cypress open --component --browser edge",
+    "cy:run-unit": "cypress run --component"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -31,6 +33,7 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
     "axios-mock-adapter": "^1.22.0",
+    "chai": "^5.1.0",
     "cypress": "^13.8.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -42,7 +45,6 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.23.0",
     "react-toastify": "^10.0.5",
-    "redux-mock-store": "^1.5.4",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
