@@ -1,5 +1,7 @@
 declare namespace Cypress {
   interface Chainable {
-    getBySel(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>;
+    getByTestId(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>;
+
+    login(): void;
   }
 }

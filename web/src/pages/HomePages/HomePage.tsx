@@ -1,7 +1,7 @@
 import React from "react";
 
-import { PageLayout } from "../layouts/PageLayout";
-import { Home } from "../../components/Home";
+import { Home } from "@/components/Home/Home";
+import { PageLayout } from "@/pages/layouts/PageLayout";
 
 const _HomePage: React.FC = () => {
   return (

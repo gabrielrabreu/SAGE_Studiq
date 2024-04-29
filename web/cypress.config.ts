@@ -3,17 +3,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   env: {
-    apiUrl: "http://localhost:3001",
-  },
-  component: {
-    devServer: {
-      framework: "react",
-      bundler: "vite",
-    },
-    setupNodeEvents(on, config) {
-      codeCoverageTask(on, config);
-      return config;
-    },
+    apiUrl: "http://localhost:3001/api",
   },
   e2e: {
     baseUrl: "http://localhost:3000",

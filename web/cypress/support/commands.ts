@@ -1,3 +1,19 @@
-Cypress.Commands.add("getBySel", (selector) => {
-  return cy.get(`[data-test=${selector}]`);
+Cypress.Commands.add("getByTestId", (selector) => {
+  return cy.get(`[data-testid=${selector}]`);
+});
+
+Cypress.Commands.add("login", () => {
+  cy.intercept("POST", `${Cypress.env("apiUrl")}/login`, {
+    fixture: "login.json",
+  });
+
+  cy.intercept("POST", `${Cypress.env("apiUrl")}/info`, {
+    fixture: "login.json",
+  });
+
+  cy.visit("/auth/login");
+  cy.getByTestId("Login_email_input").type("mail@mail");
+  cy.getByTestId("Login_password_input").type("Pass!123");
+  cy.getByTestId("Login_submit_button").click();
+  cy.getByTestId("Home_title").should("be.visible");
 });

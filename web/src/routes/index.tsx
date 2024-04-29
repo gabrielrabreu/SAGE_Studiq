@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Loading } from "../components/Loading";
-import { PATH } from "../constants/paths";
-import MainLayout from "../pages/layouts/MainLayout";
-import HomePage from "../pages/HomePages/HomePage";
-import LoginPage from "../pages/AuthPages/LoginPage";
+import { Loading } from "@/components/Loading/Loading";
+import { PATH } from "@/constants/paths";
+import MainLayout from "@/pages/layouts/MainLayout";
+import HomePage from "@/pages/HomePages/HomePage";
+import LoginPage from "@/pages/AuthPages/LoginPage";
 
 export const Router = () => {
   return (
