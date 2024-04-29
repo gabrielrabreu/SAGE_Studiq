@@ -25,7 +25,6 @@ const _Header: React.FC<Props> = ({ user }) => {
   const [isMenuVisible, setMenuVisible] = useState(false);
 
   const toggleMenuVisibility = () => {
-    // Alterando o estado usando o setter setMenuVisible
     setMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible);
   };
 
