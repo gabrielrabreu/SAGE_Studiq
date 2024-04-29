@@ -21,7 +21,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 interface Props extends ConnectedProps<typeof connector>, RouteProps {}
 
-const _RightMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
+const _UserMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
   return (
     isVisible && (
       <div className="fixed inset-0 z-50 overflow-hidden">
@@ -102,6 +102,6 @@ const _RightMenu: React.FC<Props> = ({ isVisible, onClose, user, logout }) => {
   );
 };
 
-const RightMenu = connector(_RightMenu);
+const UserMenu = connector(_UserMenu);
 
-export { RightMenu };
+export { UserMenu };

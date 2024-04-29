@@ -6,7 +6,7 @@ import { MoonIcon, SunIcon } from "lucide-react";
 import { PATH } from "@/constants/paths";
 import { RootState } from "@/store/store";
 
-import { RightMenu } from "./RightMenu";
+import { UserMenu } from "./UserMenu";
 import { useDarkMode } from "./useDarkMode";
 
 const mapStateToProps = (state: RootState) => ({
@@ -89,7 +89,7 @@ const _Header: React.FC<Props> = ({ user }) => {
           </div>
         </div>
       </div>
-      <RightMenu isVisible={isMenuVisible} onClose={() => setMenuVisible(false)} />
+      <UserMenu isVisible={isMenuVisible} onClose={() => setMenuVisible(false)} />
     </header>
   );
 };
