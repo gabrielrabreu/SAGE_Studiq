@@ -87,6 +87,12 @@ describe("Header", () => {
       },
     };
 
+    cy.window().then((win) => {
+      cy.stub(win, "matchMedia").withArgs("(prefers-color-scheme: dark)").returns({
+        matches: true,
+      });
+    });
+
     renderWithProvider(
       <MemoryRouter>
         <Header />
